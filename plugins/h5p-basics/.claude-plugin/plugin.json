@@ -1,0 +1,7 @@
+{
+  "name": "h5p-basics",
+  "description": "H5P-Dateien auf Dateiebene bauen, pruefen und reparieren, plus die didaktische Beurteilung interaktiver Lerneinheiten.",
+  "version": "1.0.0",
+  "author": { "name": "Arne Spielhoff" },
+  "license": "CC BY 4.0"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "chrom-basics",
+  "description": "Chrome-Erweiterungen nach Manifest V3 bauen, die auf einer fremden Weboberflaeche wie Moodle arbeiten.",
+  "version": "1.0.0",
+  "author": { "name": "Arne Spielhoff" },
+  "license": "CC BY 4.0"
+}
