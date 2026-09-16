@@ -6,6 +6,24 @@ Diese Referenz beschreibt, wie so ein Paket auf Dateiebene aufgebaut und
 gebaut wird. Für Packen, Bibliotheksprüfung und Fehlersuche gilt unverändert
 `technik.md`, für die Herkunft der Bibliotheksordner `basispakete.md`.
 
+<!-- INDEX -->
+> **Abschnitte.** Diese Datei muss nicht ganz gelesen werden — nur den
+> gebrauchten Abschnitt: `sed -n '<von>,<bis>p' verzweigung.md`.
+> Nach inhaltlichen Aenderungen `python3 index_bauen.py` laufen lassen,
+> sonst stimmen die Zeilen nicht mehr.
+>
+> | Abschnitt | Zeilen |
+> |---|---|
+> | 1. Der Baum läuft immer von oben nach unten | 27–47 |
+> | 2. Bibliotheksversionen — die benannte Ausnahme | 48–77 |
+> | 3. Aufbau der `content.json` | 78–119 |
+> | 4. Ein `BranchingQuestion`-Knoten | 120–175 |
+> | 5. Routing über `nextContentId` | 176–186 |
+> | 6. Bau-Pipeline | 187–288 |
+> | 7. Vor dem Upload prüfen | 289–301 |
+> | 8. Häufige Fehlermeldungen | 302–309 |
+<!-- /INDEX -->
+
 ## 1. Der Baum läuft immer von oben nach unten
 
 Ein Branching Scenario ist intern ein **gerichteter Baum**, der von der

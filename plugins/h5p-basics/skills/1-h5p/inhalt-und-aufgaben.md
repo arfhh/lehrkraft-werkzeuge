@@ -1,5 +1,22 @@
 # Inhalt und interaktive Aufgaben
 
+<!-- INDEX -->
+> **Abschnitte.** Diese Datei muss nicht ganz gelesen werden — nur den
+> gebrauchten Abschnitt: `sed -n '<von>,<bis>p' inhalt-und-aufgaben.md`.
+> Nach inhaltlichen Aenderungen `python3 index_bauen.py` laufen lassen,
+> sonst stimmen die Zeilen nicht mehr.
+>
+> | Abschnitt | Zeilen |
+> |---|---|
+> | 1. Inhaltlich prüfen, nicht nur sprachlich | 20–60 |
+> | 2. `H5P.Blanks` — Synonyme ergänzen | 61–95 |
+> | 3. `H5P.DragQuestion` — gezieltes Feedback bei typischen Fehlern | 96–122 |
+> | 4. Freie Schreibaufgaben | 123–138 |
+> | 5. Neue Aufgaben ergänzen | 139–155 |
+> | 6. Titel und Überschriften | 156–172 |
+> | 7. Versionierung sichtbar machen | 173–188 |
+<!-- /INDEX -->
+
 ## 1. Inhaltlich prüfen, nicht nur sprachlich
 
 Ein H5P wird selten nur wegen Tippfehlern überarbeitet. Claude soll das

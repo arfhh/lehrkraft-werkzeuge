@@ -7,6 +7,28 @@ fraction-Bewertungsregeln stehen in der SKILL.md; Cloze steht in
 Die Vorlagen sind wortwörtlich als Gerüst zu übernehmen — nur die Inhalte
 werden ausgetauscht.
 
+<!-- INDEX -->
+> **Abschnitte.** Diese Datei muss nicht ganz gelesen werden — nur den
+> gebrauchten Abschnitt: `sed -n '<von>,<bis>p' fragetypen.md`.
+> Nach inhaltlichen Aenderungen `python3 index_bauen.py` laufen lassen,
+> sonst stimmen die Zeilen nicht mehr.
+>
+> | Abschnitt | Zeilen |
+> |---|---|
+> | Übersicht | 32–50 |
+> | Kategorie-Pseudofrage | 51–64 |
+> | Multiple Choice — Einzelantwort | 65–112 |
+> | Multiple Choice — Mehrfachantwort | 113–119 |
+> | Wahr/Falsch | 120–141 |
+> | Kurzantwort | 142–174 |
+> | Numerische Antwort | 175–205 |
+> | Zuordnung (Matching) | 206–241 |
+> | Essay/Freitext | 242–271 |
+> | Beschreibung | 272–285 |
+> | Berechnete Frage (`calculated`) | 286–374 |
+> | Optionale Zusatzelemente | 375–400 |
+<!-- /INDEX -->
+
 ## Übersicht
 
 | Fragetyp | XML-type | Beschreibung |

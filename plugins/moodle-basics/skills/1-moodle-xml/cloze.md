@@ -15,6 +15,23 @@ Cloze-Fragen sind leistungsfähig, aber **eine kleine Programmiersprache mit str
 
 Cloze eignet sich besonders für **Zufallsfragen**: Alle Fragen einer Kategorie werden in Moodle als zufälliger Fragenpool genutzt (siehe „Zufallsfragen" am Ende). Empfehlung: mind. 15–20 Fragen pro Kategorie, damit Abschreiben erschwert wird. In einem Zufallspool brauchen alle Fragen denselben Anforderungsbereich, denselben Typ und dieselbe Schwierigkeit — sonst hängt die Note vom Losglück ab.
 
+<!-- INDEX -->
+> **Abschnitte.** Diese Datei muss nicht ganz gelesen werden — nur den
+> gebrauchten Abschnitt: `sed -n '<von>,<bis>p' cloze.md`.
+> Nach inhaltlichen Aenderungen `python3 index_bauen.py` laufen lassen,
+> sonst stimmen die Zeilen nicht mehr.
+>
+> | Abschnitt | Zeilen |
+> |---|---|
+> | Format-Übersicht (Kürzel) | 35–86 |
+> | Grundsyntax | 87–90 |
+> | Kurzantwort im Text (SA / SAC) | 91–134 |
+> | Multiple-Choice-Familie im Text (MC/MCS/MR/MRS/MRH/MRHS/MCV/MCVS/MCH/MCHS) | 135–224 |
+> | Numerisch im Text (NUM) | 225–258 |
+> | Cloze-Namensschema | 259–262 |
+> | Vollständiges Cloze-Datei-Gerüst | 263–293 |
+<!-- /INDEX -->
+
 ### Format-Übersicht (Kürzel)
 
 **Kurzantwort:**

@@ -1,5 +1,26 @@
 # Medien: Metadaten, Barrierefreiheit, Audio, Video
 
+<!-- INDEX -->
+> **Abschnitte.** Diese Datei muss nicht ganz gelesen werden — nur den
+> gebrauchten Abschnitt: `sed -n '<von>,<bis>p' medien.md`.
+> Nach inhaltlichen Aenderungen `python3 index_bauen.py` laufen lassen,
+> sonst stimmen die Zeilen nicht mehr.
+>
+> | Abschnitt | Zeilen |
+> |---|---|
+> | 1. Metadaten — der häufigste Grund für abgelehnte Uploads | 24–59 |
+> | Zwei Copyright-Felder, nur eines zählt | 60–78 |
+> | Lizenz „U" nicht blind auf CC0 setzen | 79–98 |
+> | Quellen umstellen — nur exakte Treffer ersetzen | 99–134 |
+> | 2. Alternativtexte und Barrierefreiheit | 135–167 |
+> | 3. Vorlese-Audio (TTS) | 168–190 |
+> | Grundprinzip: Vorlese-Text = sichtbarer Folientext | 191–201 |
+> | TTS-Aussprache: alles ausschreiben, was unklar ist | 202–232 |
+> | Ablauf einer Aufnahme-Runde | 233–272 |
+> | Lückentexte vorlesen: Piepton-Splice | 273–307 |
+> | 4. Video: lokal einbetten statt nur verlinken | 308–353 |
+<!-- /INDEX -->
+
 ## 1. Metadaten — der häufigste Grund für abgelehnte Uploads
 
 Jedes Medienelement (`H5P.Image`, `H5P.Audio`, `H5P.Video`,

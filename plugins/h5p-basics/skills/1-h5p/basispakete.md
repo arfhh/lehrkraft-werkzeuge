@@ -13,6 +13,22 @@ Die Pakete liegen als `.h5p`-Dateien im Unterordner `H5P-Basispakete/`
 desselben Werkzeug-Ordners, in dem auch diese Datei liegt. Diese Referenz
 beschreibt, wie mit ihnen gearbeitet wird.
 
+<!-- INDEX -->
+> **Abschnitte.** Diese Datei muss nicht ganz gelesen werden — nur den
+> gebrauchten Abschnitt: `sed -n '<von>,<bis>p' basispakete.md`.
+> Nach inhaltlichen Aenderungen `python3 index_bauen.py` laufen lassen,
+> sonst stimmen die Zeilen nicht mehr.
+>
+> | Abschnitt | Zeilen |
+> |---|---|
+> | Herkunft und Lizenz der hier beschriebenen Pakete | 32–42 |
+> | Inventar | 43–60 |
+> | Ablauf: ein vorhandenes Basispaket nutzen | 61–81 |
+> | Ablauf: ein neues Basispaket aufbereiten | 82–101 |
+> | Zwei Fallstricke | 102–116 |
+> | Prüfung eines Basispakets | 117–125 |
+<!-- /INDEX -->
+
 ## Herkunft und Lizenz der hier beschriebenen Pakete
 
 Die Sammlung stammt aus dem Toolkit der Barcamp-Session „KI und ZUM-Apps",

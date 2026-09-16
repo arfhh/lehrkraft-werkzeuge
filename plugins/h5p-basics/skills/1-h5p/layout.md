@@ -4,6 +4,24 @@ Dieser Teil betrifft vor allem `H5P.CoursePresentation` — den Content-Typ,
 in dem Elemente frei auf einer Folie positioniert werden — und damit auch
 `H5P.InteractiveBook`, dessen Kapitel meist Course Presentations enthalten.
 
+<!-- INDEX -->
+> **Abschnitte.** Diese Datei muss nicht ganz gelesen werden — nur den
+> gebrauchten Abschnitt: `sed -n '<von>,<bis>p' layout.md`.
+> Nach inhaltlichen Aenderungen `python3 index_bauen.py` laufen lassen,
+> sonst stimmen die Zeilen nicht mehr.
+>
+> | Abschnitt | Zeilen |
+> |---|---|
+> | Das Koordinatensystem | 25–57 |
+> | Folien-Hintergründe als Bildelement | 58–89 |
+> | Kasten-Ränder eines Hintergrundbilds ermitteln | 90–101 |
+> | Layout-Konsistenz-Check | 102–150 |
+> | Titel-Elemente | 151–174 |
+> | Elemente relativ zum Titel positionieren | 175–212 |
+> | Interaktive Widgets nicht in der Breite verändern | 213–224 |
+> | Mehrspaltige Bild-Text-Listen | 225–241 |
+<!-- /INDEX -->
+
 ## Das Koordinatensystem
 
 Jedes Element auf einer Folie hat `x`, `y`, `width`, `height` — **alles in

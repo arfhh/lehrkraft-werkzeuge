@@ -1,5 +1,35 @@
 # Technik: Packen, Bibliotheken, Fehlersuche
 
+<!-- INDEX -->
+> **Abschnitte.** Diese Datei muss nicht ganz gelesen werden — nur den
+> gebrauchten Abschnitt: `sed -n '<von>,<bis>p' technik.md`.
+> Nach inhaltlichen Aenderungen `python3 index_bauen.py` laufen lassen,
+> sonst stimmen die Zeilen nicht mehr.
+>
+> | Abschnitt | Zeilen |
+> |---|---|
+> | 1. Entpacken und Packen | 33–34 |
+> | Die eiserne Regel: nie mit `zip -r` packen | 35–68 |
+> | Was `verify()` prüft | 69–78 |
+> | Dateinamen im Paket: nur ASCII | 79–104 |
+> | Root-Ebene des Archivs prüfen | 105–126 |
+> | Arbeitsverzeichnisse nicht wiederverwenden | 127–144 |
+> | Packen auf gemounteten/synchronisierten Laufwerken | 145–162 |
+> | 2. Bibliotheksversionen | 163–164 |
+> | Warum das ständig schiefgeht | 165–179 |
+> | Zwei verschiedene Prüfungen — beide werden gebraucht | 180–208 |
+> | Große Versionssprünge: erst Risiko einschätzen | 209–222 |
+> | 3. Editor-Fallstricke (Lumi, Moodle, WordPress) | 223–229 |
+> | Ein ganzes Kapitel wird beim Speichern geleert | 230–279 |
+> | `metadata.source` verschwindet bei frisch eingefügten Bildern | 280–290 |
+> | Kryptische Lumi-Fehler beim Öffnen | 291–297 |
+> | 4. Defekte Einträge im Archiv | 298–320 |
+> | 5. Versteckte Inhalte finden | 321–335 |
+> | 6. Textkorrekturen über die JSON-Struktur | 336–362 |
+> | 7. Verwaiste Mediendateien | 363–377 |
+> | 8. Pfade mit Umlauten (macOS) | 378–401 |
+<!-- /INDEX -->
+
 ## 1. Entpacken und Packen
 
 ### Die eiserne Regel: nie mit `zip -r` packen

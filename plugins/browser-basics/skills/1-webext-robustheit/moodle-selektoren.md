@@ -8,6 +8,27 @@ sie auch bei einer Installation in einem Unterverzeichnis stimmen.
 Alles hier wurde live geprüft. Nicht neu erraten — und wenn etwas nicht mehr stimmt,
 hier korrigieren. Pfadangaben sind **relativ zur Moodle-Wurzel** zu lesen.
 
+<!-- INDEX -->
+> **Abschnitte.** Diese Datei muss nicht ganz gelesen werden — nur den
+> gebrauchten Abschnitt: `sed -n '<von>,<bis>p' moodle-selektoren.md`.
+> Nach inhaltlichen Aenderungen `python3 index_bauen.py` laufen lassen,
+> sonst stimmen die Zeilen nicht mehr.
+>
+> | Abschnitt | Zeilen |
+> |---|---|
+> | Notenstufen-Seite | 32–41 |
+> | Bewertungsseite (Manuelle Bewertung) | 42–55 |
+> | Richtige Antworten holen | 56–68 |
+> | Kursname | 69–75 |
+> | DOM der Bewertungsseite bei Essay-Fragen | 76–88 |
+> | Draft-Dateibereich: „File does not exist" | 89–101 |
+> | Speichern erzeugt eine neue Fragen-ID | 102–113 |
+> | Schon nachbewertet erkennt man nur arithmetisch | 114–129 |
+> | Das Bearbeiten-Formular einer Frage (live geprüft 04.09.2026) | 130–173 |
+> | Präzisierung zu draftfile-Bildern (04.09.2026) | 174–182 |
+> | Schreiben ins Fragenformular: zwei Fallen, live belegt 04.09.2026 | 183–204 |
+<!-- /INDEX -->
+
 ### Notenstufen-Seite
 
 - Übersicht: `…/grade/edit/letter/index.php?id=<kursid>`

@@ -47,6 +47,20 @@ wo möglich, einem Knopf, der die fertige Nachforderung in die Zwischenablage le
 
 ---
 
+<!-- INDEX -->
+> **Abschnitte.** Diese Datei muss nicht ganz gelesen werden — nur den
+> gebrauchten Abschnitt: `sed -n '<von>,<bis>p' ki-prompts.md`.
+> Nach inhaltlichen Aenderungen `python3 index_bauen.py` laufen lassen,
+> sonst stimmen die Zeilen nicht mehr.
+>
+> | Abschnitt | Zeilen |
+> |---|---|
+> | Lehren aus den Blindvergleichen | 64–76 |
+> | Drei Fehlerquellen bei KI-Prompts | 77–92 |
+> | Vierte Fehlerquelle: krumme Anführungszeichen brechen das JSON (09.09.2026) | 93–121 |
+> | Erwartungshorizonte erzeugen lassen: drei Stellen, die schiefgehen (04.09.2026) | 122–149 |
+<!-- /INDEX -->
+
 ## Lehren aus den Blindvergleichen
 - **Übereinstimmung zweier Modelle ist kein Qualitätsmaß.** Als der Prompt die hinterlegten
   Einstufungen mitgab, sank die Übereinstimmung (15/31 → 7/19), weil ein Modell sich verankerte
@@ -75,6 +89,31 @@ wo möglich, einem Knopf, der die fertige Nachforderung in die Zwischenablage le
 **Merke:** Mehr Kontext ist nicht automatisch besser — jede Erweiterung eröffnet neue Wege,
 falsch zu schließen. Nach so einer Änderung denselben Datensatz erneut durchlaufen lassen und
 gegen den vorherigen Lauf **diffen**, statt nur den ursprünglichen Fall zu prüfen.
+
+## Vierte Fehlerquelle: krumme Anführungszeichen brechen das JSON (09.09.2026)
+
+Beim Ausfüllen des JSON-Blocks (Schritt 2) mit deutschen Wortzitaten in den
+Feedback-Feldern — „Löschsand" wird zu Löschsand, vor „falls" fehlt ein Komma — reicht ein
+einziges falsch gepaartes Anführungszeichen, damit Chrome den ganzen Block als kaputtes
+JSON zurückweist (`Expected ',' or '}' after property value`). Passiert leicht, weil ein
+öffnendes „ (U+201E) und ein schließendes " (U+201C) zwei verschiedene Zeichen sind — wird
+versehentlich das gerade ASCII-Anführungszeichen " als Schließer benutzt, sieht der Text
+beim Lesen unauffällig aus, aber für den JSON-Parser endet der String genau dort, mitten im
+Satz. Schwer zu finden, weil es nur bei jedem zweiten oder dritten Zitat passiert und der
+Rest der Datei syntaktisch sauber bleibt.
+
+**Abhilfe, die zuverlässig funktioniert:** In JSON-Werten, die für Moodle bestimmt sind
+(Feedback-Text, Erwartungshorizont, alles was am Ende in ein Moodle-Feld geschrieben wird),
+**keine Anführungszeichen um zitierte Wörter setzen** — auch keine typografischen. Statt
+„Löschsand" wird zu Löschsand oder vor „falls" fehlt ein Komma einfach ohne Zeichen
+schreiben: Löschsand wird zu Löschsand, vor dem Wort falls fehlt ein Komma. Das ist für
+Schülerinnen und Schüler ohnehin leichter lesbar als verschachtelte Anführungszeichen, und
+es gibt schlicht kein Zeichen mehr, das falsch gepaart werden könnte.
+
+Bleibt ein Zitat unvermeidbar (z. B. in einem Prompt-Text, der selbst nicht in ein
+Moodle-Feld geschrieben wird), gilt: öffnendes und schließendes Zeichen einzeln zählen und
+nachprüfen, dass auf jedes „ ein " folgt — nie ein gerades ". Im Zweifel lieber ganz
+weglassen als raten.
 
 ---
 

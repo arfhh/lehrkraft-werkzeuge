@@ -13,9 +13,9 @@
       "description": "Moodle-Fragen als XML erzeugen und importieren, mit Cloze-Formenkanon und Bewertungsmassstab."
     },
     {
-      "name": "chrom-basics",
-      "source": "./plugins/chrom-basics",
-      "description": "Chrome-Erweiterungen nach Manifest V3 bauen, die auf einer fremden Weboberflaeche wie Moodle arbeiten."
+      "name": "browser-basics",
+      "source": "./plugins/browser-basics",
+      "description": "Browser-Erweiterungen bauen, die auf einer fremden Weboberflaeche wie Moodle arbeiten -- robuste Laufzeit-Technik plus WXT-Aufbau fuer Chrome, Firefox und Edge aus einer Codebasis."
     }
   ]
 }

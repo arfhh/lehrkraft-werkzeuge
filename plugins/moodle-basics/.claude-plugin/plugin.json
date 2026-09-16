@@ -1,7 +1,7 @@
 {
   "name": "moodle-basics",
   "description": "Moodle-Fragen als XML erzeugen und importieren, mit Cloze-Formenkanon und Bewertungsmassstab.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": { "name": "Arne Spielhoff" },
   "license": "CC BY-SA 4.0"
 }

@@ -1,0 +1,7 @@
+{
+  "name": "browser-basics",
+  "description": "Browser-Erweiterungen bauen, die auf einer fremden Weboberflaeche wie Moodle arbeiten -- robuste Laufzeit-Technik plus WXT-Aufbau fuer Chrome, Firefox und Edge aus einer Codebasis.",
+  "version": "1.1.0",
+  "author": { "name": "Arne Spielhoff" },
+  "license": "CC BY 4.0"
+}
