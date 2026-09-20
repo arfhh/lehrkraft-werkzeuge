@@ -27,12 +27,48 @@ Hilfsprogramme), das sich mit zwei kurzen Chat-Befehlen installieren laesst
 ## Fuer wen ist das?
 
 Fuer Lehrkraefte, die mit Claude arbeiten (Desktop-App, Claude Code oder
-claude.ai) und eine dieser vier Aufgaben regelmaessig haben: interaktive
-H5P-Uebungen bauen, Moodle-Testfragen erstellen, PDF-Abgaben lesen und
-rueckmelden, oder selbst kleine Browser-Erweiterungen fuer eine
-Lernplattform bauen.
+claude.ai). Vier Aufgaben werden abgedeckt — falls dir die Begriffe nichts
+sagen, hier kurz erklaert:
 
-Es gibt zwei Wege, das zu installieren, je nachdem womit du arbeitest.
+**Moodle** ist eine an vielen Schulen eingesetzte Lernplattform: eine
+Webseite, auf der eine Schule ihre Kurse anlegt. Dort koennen Lehrkraefte
+Materialien hochladen, automatisch auswertbare **Tests** stellen (Moodle
+nennt sie "Quiz" — Lueckentexte, Multiple-Choice, Kurzantworten …), und
+**Aufgaben** einsammeln, bei denen Lernende eine Datei hochladen, z. B. ein
+ausgefuelltes PDF-Arbeitsheft. Zwei der vier Buendel unten drehen sich genau
+um diese beiden Moodle-Bereiche: Tests bauen (`moodle-basics`) und
+PDF-Aufgaben lesen und bewerten (`abgaben-basics`).
+
+**H5P** ist ein Werkzeug fuer **interaktive Uebungen**, die man in einen
+Moodle-Kurs einbetten kann, statt nur Text zum Lesen anzubieten — zum
+Beispiel ein Lueckentext zum direkten Ausfuellen im Browser, eine
+Zuordnungsaufgabe zum Verschieben, eine Verzweigung, bei der man sich durch
+verschiedene Wege klickt, oder digitale Karteikarten. Normalerweise baut man
+sowas in einem eigenen, etwas umstaendlichen Editor von Hand zusammen — das
+Buendel `h5p-basics` gibt Claude das Wissen, wie H5P-Dateien technisch
+aufgebaut sind, damit es sowas direkt fuer dich erzeugt, prueft und
+repariert.
+
+Eine **Browser-Erweiterung** (dazu gleich mehr, siehe unten) ist ein
+kleines Zusatzprogramm fuer den Browser, das auf bestimmten Seiten
+automatisch zusaetzliche Knoepfe einblendet. Wer selbst so etwas fuer
+Moodle oder eine andere Lernplattform bauen moechte, statt eine der sechs
+fertigen unten zu benutzen, findet im Buendel `browser-basics` das
+technische Handwerkszeug dafuer.
+
+Kurz zusammengefasst — die vier Buendel helfen bei:
+
+1. **Interaktive H5P-Uebungen** erstellen, pruefen und reparieren
+   (`h5p-basics`).
+2. **Moodle-Testfragen** fertig schreiben, inklusive Bewertungsmassstab
+   (`moodle-basics`).
+3. **PDF-Abgaben lesen und bewerten** — Arbeitshefte, Berichte, ueber
+   Wochen laufende Aufgabenserien (`abgaben-basics`).
+4. **Eigene Browser-Erweiterungen bauen**, die auf einer Lernplattform wie
+   Moodle arbeiten (`browser-basics`).
+
+Es gibt zwei Wege, ein Buendel zu installieren, je nachdem womit du
+arbeitest.
 
 ## Weg 1 — Claude-Desktop-App oder Claude Code (empfohlen)
 
