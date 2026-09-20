@@ -33,10 +33,11 @@ anlegen. Die Anleitung liegt als `LIESMICH.md` im ZIP.
 
 ## Fertige Erweiterungen zum Anschauen
 
-Die fuenf Chrome-Erweiterungen fuer Moodle, die mit `browser-basics` gebaut
+Die sechs Chrome-Erweiterungen fuer Moodle, die mit `browser-basics` gebaut
 und gepflegt werden, liegen in einem eigenen Repo:
 <https://github.com/arfhh/moodle-chrome-erweiterungen> — Bewerten,
-Nachbewerten, Coaching, Cloze-Autofill und Notenstufen.
+Nachbewerten, Coaching, Datei-Abgaben bewerten, Cloze-Autofill und
+Notenstufen.
 
 ## Lizenz
 
