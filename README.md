@@ -2,7 +2,7 @@
 
 Skills rund um **H5P**, **Moodle** und **Chrome-Erweiterungen**, entstanden
 im Chemieunterricht und in der Fortbildung am LI Hamburg.
-Autor: Arne Spielhoff. Fassung 1.1.0, Stand 16.09.2026.
+Autor: Arne Spielhoff. Fassung 1.2.0, Stand 20.09.2026.
 
 Es gibt zwei Wege, je nachdem womit du arbeitest.
 
@@ -13,7 +13,7 @@ Eine Installation, alle Begleitdateien und Skripte sind dabei.
     /plugin marketplace add arfhh/lehrkraft-werkzeuge
     /plugin install h5p-basics@lehrkraft-werkzeuge
 
-Statt `h5p-basics` geht auch `moodle-basics` oder `browser-basics`.
+Statt `h5p-basics` geht auch `moodle-basics`, `browser-basics` oder `abgaben-basics`.
 Danach einmal `/reload-plugins`.
 
 ## Weg 2 — Claude im Browser (claude.ai)
@@ -22,13 +22,14 @@ Unter **Releases** das passende ZIP herunterladen, entpacken, den Ordner ins
 eigene Projekt legen und die Skills aus dem Unterordner `Skill/` im Konto
 anlegen. Die Anleitung liegt als `LIESMICH.md` im ZIP.
 
-## Die drei Buendel
+## Die vier Buendel
 
 | Buendel | Skills | Wofuer |
 |---|---|---|
 | `h5p-basics` | `1-h5p`, `2-didaktik-h5p` | H5P-Dateien auf Dateiebene bauen, pruefen und reparieren, plus die didaktische Beurteilung interaktiver Lerneinheiten. |
 | `moodle-basics` | `1-moodle-xml`, `2-didaktik-bewertung` | Moodle-Fragen als XML erzeugen und importieren, mit Cloze-Formenkanon und Bewertungsmassstab. |
 | `browser-basics` | `1-webext-robustheit`, `1-browser-wxt` | Browser-Erweiterungen bauen, die auf einer fremden Weboberflaeche wie Moodle arbeiten -- robuste Laufzeit-Technik plus WXT-Aufbau fuer Chrome, Firefox und Edge aus einer Codebasis. |
+| `abgaben-basics` | `1-pdf-abgaben`, `2-didaktik-abgaben`, `2-didaktik-bewertung` | PDF-Datei-Abgaben tokensparsam auslesen (Vordruck-Abzug, Duplikaterkennung, Kontaktbogen fuer Handschrift) und ueber Wochen laufende Aufgabenserien fachunabhaengig bewerten und rueckmelden. |
 
 ## Fertige Erweiterungen zum Anschauen
 
@@ -39,7 +40,7 @@ Nachbewerten, Coaching, Cloze-Autofill und Notenstufen.
 
 ## Lizenz
 
-`h5p-basics` und `browser-basics`: **CC BY 4.0** — nutzen, aendern und
-weitergeben mit Namensnennung.
+`h5p-basics`, `browser-basics` und `abgaben-basics`: **CC BY 4.0** — nutzen,
+aendern und weitergeben mit Namensnennung.
 `moodle-basics`: **CC BY-SA 4.0** — zusaetzlich Weitergabe unter gleichen
 Bedingungen, weil Teile auf Vorarbeiten unter dieser Lizenz beruhen.

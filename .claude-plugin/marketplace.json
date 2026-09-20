@@ -16,6 +16,11 @@
       "name": "browser-basics",
       "source": "./plugins/browser-basics",
       "description": "Browser-Erweiterungen bauen, die auf einer fremden Weboberflaeche wie Moodle arbeiten -- robuste Laufzeit-Technik plus WXT-Aufbau fuer Chrome, Firefox und Edge aus einer Codebasis."
+    },
+    {
+      "name": "abgaben-basics",
+      "source": "./plugins/abgaben-basics",
+      "description": "PDF-Datei-Abgaben tokensparsam auslesen und ueber Wochen laufende Aufgabenserien fachunabhaengig bewerten und rueckmelden."
     }
   ]
 }

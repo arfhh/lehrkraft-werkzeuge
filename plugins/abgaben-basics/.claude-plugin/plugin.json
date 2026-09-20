@@ -1,0 +1,7 @@
+{
+  "name": "abgaben-basics",
+  "description": "PDF-Datei-Abgaben tokensparsam auslesen (Vordruck-Abzug, Duplikaterkennung, Kontaktbogen fuer Handschrift) und ueber Wochen laufende Aufgabenserien fachunabhaengig bewerten und rueckmelden.",
+  "version": "1.0.0",
+  "author": { "name": "Arne Spielhoff" },
+  "license": "CC BY 4.0"
+}
