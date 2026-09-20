@@ -30,9 +30,7 @@ Fuer Lehrkraefte, die mit Claude arbeiten (Desktop-App, Claude Code oder
 claude.ai) und eine dieser vier Aufgaben regelmaessig haben: interaktive
 H5P-Uebungen bauen, Moodle-Testfragen erstellen, PDF-Abgaben lesen und
 rueckmelden, oder selbst kleine Browser-Erweiterungen fuer eine
-Lernplattform bauen. Fachlich sind die Skills bewusst **nicht auf Chemie
-beschraenkt** — die Bewertungs- und Feedbackregeln gelten fachunabhaengig
-fuer jedes Fach.
+Lernplattform bauen.
 
 Es gibt zwei Wege, das zu installieren, je nachdem womit du arbeitest.
 
