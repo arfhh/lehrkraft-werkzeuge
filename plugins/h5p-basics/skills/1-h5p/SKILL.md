@@ -1,6 +1,6 @@
 ---
 name: 1-h5p
-description: "H5P-Dateien (.h5p) direkt auf Dateiebene erstellen, prüfen und reparieren, statt nur im grafischen Editor zu arbeiten. Deckt ab: Aufbau eines H5P-Pakets (h5p.json, content/content.json, Bibliotheksordner), sicheres Entpacken/Packen (der klassische 'File content/ not allowed'-Uploadfehler), Bibliotheksversions-Prüfung ('Bibliothek H5P.X a.b ist ungültig, sollte c.d sein'), Bauen aus fertigen Basispaketen ohne Editor, Medien-Metadaten und Lizenzen, Alternativtexte, Vorlese-Audio (TTS), Video-Einbettung statt Streaming-Link, Folien-Layout in CoursePresentation, Branching Scenarios, interaktive Aufgaben (Blanks-Synonyme, Drag-Feedback), Editor-Fallstricke (Lumi löscht beim Speichern Inhalte) und eine Abschluss-Checkliste. Rein technisch und projektneutral — für die didaktische Beurteilung eines H5P siehe die Didaktik-Skills, für Projekt-Konventionen wie Dateibenennung oder Design die jeweilige Projekt-Skill. IMMER verwenden bei 'H5P', '.h5p', 'Interactive Book', 'Course Presentation', 'Lumi', 'H5P-Upload', 'Lückentext/Blanks', 'Drag and Drop', 'Branching Scenario', 'Verzweigung', 'H5P bauen/verbessern/reparieren/packen' — auch ohne Skill-Namen."
+description: "H5P-Dateien (.h5p) direkt auf Dateiebene erstellen, prüfen und reparieren statt nur im grafischen Editor: Paketaufbau (h5p.json, content/content.json, Bibliotheksordner), sicheres Packen (der 'File content/ not allowed'-Uploadfehler), Bibliotheksversionen ('Bibliothek H5P.X a.b ist ungültig'), Bauen aus fertigen Basispaketen ohne Editor, Medien-Metadaten und Lizenzen, Alternativtexte, Vorlese-Audio (TTS), Video einbetten statt verlinken, Folien-Layout, Branching Scenarios, interaktive Aufgaben, Editor-Fallstricke (Lumi löscht beim Speichern Inhalte) und eine Abschluss-Checkliste. Rein technisch und projektneutral — die didaktische Beurteilung steht in den Didaktik-Skills, Dateibenennung und Design in der Projekt-Skill. IMMER verwenden bei 'H5P', '.h5p', 'Interactive Book', 'Course Presentation', 'Lumi', 'H5P-Upload', 'Lückentext/Blanks', 'Drag and Drop', 'Branching Scenario', 'Verzweigung', 'H5P bauen/verbessern/reparieren/packen' — auch ohne Skill-Namen."
 ---
 
 # H5P auf Dateiebene
@@ -130,9 +130,9 @@ kennt, spart sich die meisten Fehlschläge:
 
 ## Skripte
 
-Liegen im Unterordner `scripts/` des Werkzeug-Ordners, reines Python 3 ohne Fremdbibliotheken (nur
-`zip`/`unzip` als Systemwerkzeug). Sie werden in den Arbeitsordner kopiert
-und importiert:
+Liegen im Unterordner `scripts/` des Werkzeug-Ordners, reines Python 3 ohne
+Fremdbibliotheken (nur `zip`/`unzip` als Systemwerkzeug). Sie werden in den
+Arbeitsordner kopiert und importiert:
 
 - **`h5p_pack.py`** — `unpack()`, `pack()`, `verify()`, plus Helfer für den
   Struktur-Walk: `replace_text()`, `strip_invisible()`,

@@ -1,6 +1,6 @@
 ---
 name: 2-didaktik-bewertung
-description: "Bewertungs- und Feedbackregeln für digitale Lernaufgaben, fachunabhängig: die feste 6-Stufen-Skala für Rechtschreib- und Tippfehler bei Kurzantworten (100/90/75/50/25/0.01) samt neun Fehlerkategorien und dem Verfahren, plausible neue Fehlervarianten abzuleiten; Anforderungsbereiche AFB I bis III und ihre Zuordnung; Bewertungsstufen und Notenmodell für längere Schülerarbeiten; Regeln für Feedbacktexte an Schülerinnen und Schüler; anonymisiertes Bewerten mit Kürzel-IDs; Duplikatsprüfung im Graubereich. Beschreibt WIE bewertet und rückgemeldet wird — nicht, in welchem Dateiformat: für die technische Umsetzung in Testfragen oder Lernplattformen sind die Technik-Skills zuständig. IMMER verwenden bei „Bewertungsskala\", „Tippfehler-Toleranz\", „Teilpunkte\", „AFB\", „Anforderungsbereich\", „Feedback für Schülerinnen und Schüler\", „Note berechnen\", „anonymisiert bewerten\", „Abschreibverdacht\" — auch ohne Skill-Namen."
+description: "Bewertungs- und Feedbackregeln für digitale Lernaufgaben, fachunabhängig: die feste 6-Stufen-Skala für Rechtschreib- und Tippfehler bei Kurzantworten (100/90/75/50/25/0.01) samt neun Fehlerkategorien, dem Verfahren zum Ableiten neuer Fehlervarianten und der Grenze, wo die Skala nicht gilt; Anforderungsbereiche AFB I bis III und ihre Zuordnung; Bewertungsstufen und Notenmodell für längere Schülerarbeiten samt Sprachabzug; Regeln für Feedbacktexte an Schülerinnen und Schüler; anonymisiertes Bewerten mit Kürzel-IDs; Duplikatsprüfung im Graubereich. Beschreibt WIE bewertet und rückgemeldet wird — nicht, in welchem Dateiformat: für die technische Umsetzung sind die Technik-Skills zuständig. IMMER verwenden bei „Bewertungsskala\", „Tippfehler-Toleranz\", „Teilpunkte\", „AFB\", „Anforderungsbereich\", „Feedback für Schülerinnen und Schüler\", „Note berechnen\", „anonymisiert bewerten\", „Abschreibverdacht\" — auch ohne Skill-Namen."
 ---
 
 > **Begleitdateien.** Die unten genannten Dateien liegen im Ordner dieser
@@ -52,6 +52,13 @@ ausdrücklich, dass beides gelten soll, etwa weil zwei Gegenstände auf einem
 Foto nicht eindeutig zu unterscheiden sind. Dann 100 %. **Im Zweifel
 nachfragen**, bevor eine augenscheinlich falsche Antwort auf 0.01 % statt
 100 % gesetzt wird.
+
+**Wo die Skala NICHT gilt: bei Zahlen.** Numerische Lücken werden nicht
+gegen die Rechtschreibskala geprüft — Teilpunkte für einen Rechenfehler
+sind etwas anderes als Toleranz gegenüber einem Tippfehler. Dasselbe gilt
+für **negative Prozentwerte bei Mehrfachauswahl**: ein Minuswert ist dort
+der reguläre Mechanismus gegen Ankreuzen auf Verdacht und kein Fehler, den
+die Skala einzustufen hätte.
 
 ## 2 · Neue Fehlervarianten ableiten
 
@@ -116,6 +123,11 @@ Zwei Regeln dazu:
   variieren, sonst wird sie überlesen.
 - Eine Aufgabe hat **eine** eindeutige Lösung. Lässt sich das nicht
   herstellen, ist es keine automatisch auswertbare Aufgabe.
+- **Eine Ein-Wort-Antwort ist keine Freitextaufgabe.** Wo genau ein Begriff
+  erwartet wird, gehört eine automatisch ausgewertete Lückenform hin — die
+  kann das besser und gerechter. Eine Freitextaufgabe verlangt mindestens
+  zwei bis drei Sätze; erst dann ist es sinnvoll, neben dem Inhalt auch die
+  sprachliche Form zu bewerten.
 
 ## 5 · Feedback an Schülerinnen und Schüler
 
@@ -135,6 +147,12 @@ Lösung: Glasrohr. Ein Glasstab ist massiv, ein Glasrohr ist innen hohl.
 Lücke 1: direkt · Lücke 2: zufächeln. Man fächelt sich den Geruch mit
 der Hand zu, statt direkt daran zu riechen.
 ```
+
+**Bei Sprachfehlern in freien Schreibaufgaben** wird der fehlerhafte Satz
+**wörtlich zitiert und richtig danebengestellt**, nicht abstrakt beschrieben
+(„achte auf die Satzstellung" hilft niemandem). Höchstens zwei bis drei
+Vorschläge, am Ende eine mögliche Lösung. Eine fehlerfreie Antwort bekommt
+**keinen** Kommentar — Lob ohne Inhalt wird nicht gelesen.
 
 **Bei längeren Schülerarbeiten:**
 
@@ -166,6 +184,16 @@ Wahlaufgaben die beste. Gibt es keine Wahlaufgaben, ergeben die
 Pflichtaufgaben die volle Punktzahl. **Die konkreten Prozentgrenzen und
 die Schwelle für eine Auszeichnung legt die aufrufende Projekt-Skill
 fest** — sie hängen an der Notenskala der Schule.
+
+**Wird zusätzlich die sprachliche Form bewertet, dann als Abzug, nicht als
+zweiter Topf:** Punkte = Inhalt minus Sprachabzug, nie unter null. Bei
+einem echten Inhalt/Sprache-Topf bekäme eine inhaltsleere, aber sauber
+geschriebene Antwort allein für die Form noch Punkte. Der Höchstabzug wird
+vorab festgelegt und die Abzugsstufen daraus abgeleitet, statt sie fest zu
+verdrahten; steht er auf null, zählt Sprache nicht für die Note — das
+Sprachfeedback wird trotzdem geschrieben. Gestaffelt wird nach der
+**absoluten Fehlerzahl**, nicht nach Fehlerdichte: bei rund 25 Wörtern
+schlägt eine Dichte nie an.
 
 ## 7 · Anonymisiert bewerten
 

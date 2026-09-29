@@ -127,7 +127,7 @@ pro Popup/Side-Panel (`entrypoints/popup/index.html`) reicht für eine eigene HT
 - **Standard-Manifestversion unterscheidet sich:** WXT baut **Firefox standardmäßig als MV2**,
   alle anderen Browser (Chrome, Edge) als MV3. Wer Firefox ausdrücklich auch mit MV3 bauen will
   (Firefox unterstützt das inzwischen), erzwingt das über die Build-Option `manifestVersion: 3`
-  — sonst landen zwei strukturell verschiedene Manifeste in `.output/`, was beim Debuggen
+  — sonst landen zwei strukturell verschiedene Manifeste im Ausgabeordner, was beim Debuggen
   überrascht, wenn man nur den Chrome-Ordner kennt.
 
 ## 5 · Lokal testen
@@ -163,10 +163,11 @@ Als ein Durchlauf im `package.json` bündeln:
 }
 ```
 
-Ergebnis landet browsergetrennt unter `.output/chrome-mv3/`, `.output/firefox-mv2/`,
-`.output/edge-mv3/`.
+Ergebnis landet browsergetrennt unter `<outDir>/chrome-mv3/`, `<outDir>/firefox-mv2/`,
+`<outDir>/edge-mv3/` (Standard-`outDir` ist `.output/`; zum eigenen, sichtbaren Ausgabeordner
+siehe Abschnitt 10).
 
-## 7 · Fertige ZIP-Dateien erzeugen
+## 7 · Fertige ZIP-Dateien erzeugen (einzeln je Browser, über WXT selbst)
 
 ```bash
 npx wxt zip -b chrome
@@ -183,13 +184,17 @@ Signierung durch Mozilla (`web-ext sign`) oder Entwicklermodus — für den priv
 Gebrauch reicht meist „Temporäre Erweiterung laden" bzw. die unsignierte ZIP im
 Entwicklermodus.
 
+Diese `wxt zip`-ZIPs enthalten je Browser nur den nackten Erweiterungsordner — kein README, kein
+gemeinsames Paket für alle drei Browser in einer Datei. Für eine einzelne Veröffentlichungs-ZIP
+mit allen drei Browsern und README siehe Abschnitt 10.
+
 ## 8 · Manifest und Berechtigungen prüfen
 
 Nicht eigene Audit-Skripte pflegen — der Mozilla-Standard deckt Chrome, Firefox und Edge ab:
 
 ```bash
-npx web-ext lint --source-dir=.output/chrome-mv3
-npx web-ext lint --source-dir=.output/firefox-mv2
+npx web-ext lint --source-dir=<outDir>/chrome-mv3
+npx web-ext lint --source-dir=<outDir>/firefox-mv2
 ```
 
 `web-ext lint` meldet ungültige Manifestfelder, zu weite Berechtigungen, fehlende Icons und
@@ -202,8 +207,73 @@ auf das generierte Manifest anwenden (das prüft nur Syntax, nicht Gültigkeit).
 - [ ] `browser_specific_settings.gecko.id` gesetzt, wenn Firefox zu den Zielen gehört
 - [ ] Alle drei Browser gebaut (`build-all`) und **einmal tatsächlich entpackt geladen**, nicht
       nur kompiliert
-- [ ] `web-ext lint` für jeden `.output/<browser>`-Ordner ohne Fehler
-- [ ] ZIPs mit `wxt zip -b <browser>` erzeugt, Versionsnummer stimmt mit `wxt.config.ts` überein
+- [ ] `web-ext lint` für jeden `<outDir>/<browser>`-Ordner ohne Fehler
+- [ ] ZIPs erzeugt (Abschnitt 7 einzeln oder Abschnitt 10 als Sammelpaket), Versionsnummer
+      stimmt mit `wxt.config.ts` überein
 - [ ] Content Scripts nutzen `browser.*` (Polyfill), nicht hart `chrome.*`, wenn Firefox Ziel ist
 - [ ] Selektor-/Robustheitsregeln aus `1-webext-robustheit` angewendet, nicht nur das Gerüst
       übernommen
+
+## 10 · Veröffentlichungs-Paket bauen (ein ZIP für alle drei Browser)
+
+Wer die Erweiterung als ZIP-Download weitergibt (statt getrennter Store-Einreichungen je
+Browser), packt üblicherweise **einen** Ordner mit README und allen drei Browser-Unterordnern,
+fertig zum Entpacken des passenden Unterordners. Bewährtes Muster (erstmals am 17.09.2026 für
+`moodle-ai-aufgaben-grader-wxt` eingerichtet):
+
+1. **`outDir` auf einen sprechenden, sichtbaren Namen setzen** statt des versteckten
+   Vorgabewerts `.output/`:
+   ```ts
+   export default defineConfig({
+     outDir: 'Erweiterung', // Projektname des Ausgabeordners frei waehlbar
+     manifestVersion: 3,
+     // ...
+   });
+   ```
+   Ein Punkt am Anfang macht den Ordner im Finder unsichtbar, und Chrome/Firefox laden beim
+   Testen ohnehin den BAU-Ordner, nicht den Projektordner — ein Klarname hilft beim manuellen
+   Laden über „Entpackte Erweiterung laden".
+2. **`<outDir>/` komplett gitignoren** (`echo 'Erweiterung/' >> .gitignore`) — es ist reiner
+   Build-Output. Das bedeutet zwingend: die README für das Paket lebt **nicht** in diesem
+   Ordner, sondern als eigene, von Git verfolgte Datei im Projektwurzelordner, und wird beim
+   Packen dorthinein kopiert — sonst geht sie bei `git clean`/Neuklonen verloren.
+3. **Nach `build-all` die WXT-Standardordner in Veröffentlichungsnamen umbenennen**, damit beim
+   Entpacken sofort klar ist, welcher Ordner zu welchem Browser gehört:
+   `chrome-mv3` → `<produktname>-chrom`, `firefox-mv3` → `<produktname>-firefox`,
+   `edge-mv3` → `<produktname>-edge` (deutsche Kurzform „chrom" passend zum eigenen
+   Namensschema; andere Projekte wählen ihr eigenes Muster, aber konsistent zum
+   Erweiterungsnamen selbst, nicht zur WXT-internen Bezeichnung).
+4. **README aus dem Projektwurzelordner hineinkopieren**, dann den ganzen Ausgabeordner als ein
+   ZIP packen und ins Repo-weite `dist/` kopieren (Dateiname bleibt stabil — daran hängen
+   Download-Links, siehe `3-moodle-erweiterungen`).
+5. Diesen ganzen Ablauf als ein Skript (`scripts/paketieren.sh`) im Projekt ablegen und über
+   einen npm-Alias erreichbar machen (`"paket": "bash scripts/paketieren.sh"` in
+   `package.json`), statt die Schritte jedes Mal von Hand zu wiederholen:
+   ```bash
+   #!/bin/bash
+   set -e
+   DIR="$(cd "$(dirname "$0")/.." && pwd)"; cd "$DIR"
+   NAME="produktname"; OUT="Erweiterung"
+   npm run build-all
+   for b in chrom firefox edge; do rm -rf "$OUT/$NAME-$b"; done
+   mv "$OUT/chrome-mv3" "$OUT/$NAME-chrom"
+   mv "$OUT/firefox-mv3" "$OUT/$NAME-firefox"
+   mv "$OUT/edge-mv3" "$OUT/$NAME-edge"
+   cp "README.md" "$OUT/README.md"
+   # zip kann nicht immer in einen gemounteten Ordner schreiben (Temp-Datei + Umbenennen);
+   # deshalb ausserhalb bauen und hineinkopieren:
+   WORK="${TMPDIR:-/tmp}/zipwork.$$"; rm -rf "$WORK"; mkdir -p "$WORK/staging/$OUT" "$WORK/out"
+   (cd "$OUT" && find . \( -name '.DS_Store' -o -name '*.bak' \) -prune -o -type f -print) \
+     | sed 's|^\./||' | while read -r f; do
+         mkdir -p "$WORK/staging/$OUT/$(dirname "$f")"; cp "$OUT/$f" "$WORK/staging/$OUT/$f"
+       done
+   (cd "$WORK/staging" && zip -q -r -X "$WORK/out/$NAME.zip" "$OUT")
+   mkdir -p "$DIR/../dist"; cp "$WORK/out/$NAME.zip" "$DIR/../dist/$NAME.zip"; rm -rf "$WORK"
+   ```
+6. **Löschrechte auf einem gemounteten Ordner sind nicht automatisch da**: Schritt 3 (`rm -rf`
+   der alten Veröffentlichungsordner vor dem Umbenennen) schlägt beim allerersten Lauf über
+   den Geräte-Bridge-Zugriff mit „Operation not permitted" fehl, bis die Löschfreigabe für den
+   verbundenen Ordner einmal erteilt wurde (danach gilt sie für den Rest der Sitzung).
+
+Ergebnis: `npm run paket` baut, benennt um und liefert eine fertige `dist/<produktname>.zip` in
+einem Rutsch — wiederholbar für jede weitere Erweiterung, die auf WXT umgestellt wird.

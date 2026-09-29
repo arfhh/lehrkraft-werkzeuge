@@ -128,4 +128,4 @@ Cloze-Syntax und fraction-Bewertung sind strikt. `~`, `=`, `#`, `%`, `:`,
 `{`, `}`, Leerzeichen in Prozentwerten und die Großschreibung der
 Typ-Kürzel (`SHORTANSWER_C`, nicht `Shortanswer_c`) dürfen nicht variiert
 oder „verbessert" werden. Im Zweifel die Vorlagen aus den Referenzdateien
-wortwörtlich als Gerüst nehmen und nur die Inhalte austauschen.
+wörtlich als Gerüst nehmen und nur die Inhalte austauschen.

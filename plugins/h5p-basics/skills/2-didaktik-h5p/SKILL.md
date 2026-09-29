@@ -1,6 +1,6 @@
 ---
 name: 2-didaktik-h5p
-description: "Fachlich-didaktische Beurteilung interaktiver Lerneinheiten (H5P): die Gesamtschau, bei der eine Lerneinheit als Ganzes im Zusammenhang des Lehrplans und der Nachbarthemen geprüft wird statt Folie für Folie — mit Vorschlägen für einfachere Fachtexte, ergänzende Folien, zusätzliche interaktive Übungen und bessere Bilder; die Qualitätskriterien für interaktive Aufgaben (Lückentexte, Zuordnungen, Auswahlaufgaben, freie Schreibaufgaben) und ihr Feedback; die didaktischen Entwurfsmuster für verzweigte Lernpfade. Beschreibt WAS inhaltlich gut ist, nicht wie es technisch gebaut wird — dafür ist die H5P-Technik-Skill zuständig. IMMER verwenden bei „didaktisch prüfen\", „Gesamtschau\", „inhaltliche Qualität\", „Text vereinfachen\", „neue Übung vorschlagen\", „Aufgabenqualität\", „Feedback bei falschen Antworten\", „Lernpfad gestalten\" — auch ohne Skill-Namen."
+description: "Fachlich-didaktische Beurteilung interaktiver Lerneinheiten (H5P): die Gesamtschau, bei der eine Lerneinheit als Ganzes im Zusammenhang des Lehrplans und der Nachbarthemen geprüft wird statt Folie für Folie — mit Vorschlägen für einfachere Fachtexte, ergänzende Folien, zusätzliche interaktive Übungen und bessere Bilder; die Qualitätskriterien für interaktive Aufgaben (Lückentexte, Zuordnungen, Auswahlaufgaben, freie Schreibaufgaben, Diagramme mit Leerfeldern) und ihr Feedback; die didaktischen Entwurfsmuster für verzweigte Lernpfade. Beschreibt WAS inhaltlich gut ist, nicht wie es technisch gebaut wird — dafür ist die H5P-Technik-Skill zuständig. IMMER verwenden bei „didaktisch prüfen\", „Gesamtschau\", „inhaltliche Qualität\", „Text vereinfachen\", „neue Übung vorschlagen\", „Aufgabenqualität\", „Feedback bei falschen Antworten\", „Lernpfad gestalten\" — auch ohne Skill-Namen."
 ---
 
 > **Begleitdateien.** Die unten genannten Dateien liegen im Ordner dieser
@@ -57,8 +57,8 @@ jede spätere Textänderung eine neue Aufnahme.
   nutzen, was das Format hergibt, statt sich auf die bisher verwendeten
   Aufgabentypen zu beschränken. Vor dem Vorschlagen eines noch nicht
   verwendeten Typs technisch gegenprüfen, ob die nötige Bibliothek in der
-  Zieldatei überhaupt mitgeliefert ist (`1-h5p`, `references/technik.md`)
-  — sonst ist der Vorschlag nicht umsetzbar.
+  Zieldatei überhaupt mitgeliefert ist (`1-h5p`) — sonst ist der Vorschlag
+  nicht umsetzbar.
 - **Bilder didaktisch verbessern.** Vorhandene Vektorgrafiken dürfen bei
   einer guten Idee direkt angepasst werden. Für genuin neue Illustrationen
   wird ein Bildprompt geliefert statt selbst gezeichnet.
@@ -111,6 +111,20 @@ weil sie als einzige lang und vorsichtig formuliert ist.
 nicht abgeschrieben wird, und die Formulierung von Aufgabe zu Aufgabe
 variieren. Erkennungsmerkmal für eine freie Schreibaufgabe ist ein
 großzügig bemessenes Eingabefeld.
+
+**Diagramme mit Leerfeldern.** Nennt der Aufgabentext eine Anzahl
+auszufüllender Felder, ist diese Zahl ernst zu nehmen: aktiv nach so
+vielen Feldern suchen, statt die Angabe voreilig für einen Zahlendreher zu
+halten und zu „korrigieren". **Ein Leerfeld ist nicht nur ein ausdrücklich
+beschrifteter Kasten** (Label wie „Beispiele:") — auch eine Kategorie-Box
+mit sichtbar leerem Raum unter ihrem Titel ist eines. In einem
+beobachteten Fall waren es drei beschriftete plus vier solche Boxen; die
+im Aufgabentext genannten sieben stimmten, gefunden worden waren zunächst
+nur drei.
+
+Gilt allgemein für Rückfragen dieser Art: die Antwortoptionen so
+formulieren, dass die eigene unsichere Annahme klar als Annahme erkennbar
+ist — sonst bestätigt die Lehrkraft sie versehentlich mit.
 
 **Rückmeldetexte** erklären, statt nur „richtig" oder „falsch" zu melden.
 Eine Rückmeldung, die den Denkfehler benennt, ist der eigentliche
