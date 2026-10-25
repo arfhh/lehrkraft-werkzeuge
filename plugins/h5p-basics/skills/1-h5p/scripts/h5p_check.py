@@ -118,6 +118,31 @@ def media(pfad):
             shutil.rmtree(tmp, ignore_errors=True)
 
 
+GUELTIGE_COPYRIGHT_LIZENZEN = {
+    "U", "CC BY", "CC BY-SA", "CC BY-ND", "CC BY-NC", "CC BY-NC-SA",
+    "CC BY-NC-ND", "GNU GPL", "PD", "ODC PDDL", "CC PDM", "C"}
+
+
+def find_invalid_copyright(content):
+    """copyright-Objekte (aelteres Feld) mit Lizenzwert ausserhalb der
+    Werteliste. CC0 heisst dort {"license": "PD", "version": "CC0 1.0"}."""
+    funde = []
+
+    def walk(o):
+        if isinstance(o, dict):
+            cp = o.get("copyright")
+            if isinstance(cp, dict) and cp.get("license") \
+                    and cp["license"] not in GUELTIGE_COPYRIGHT_LIZENZEN:
+                funde.append((o.get("path", "?"), cp["license"]))
+            for v in o.values():
+                walk(v)
+        elif isinstance(o, list):
+            for x in o:
+                walk(x)
+    walk(content)
+    return funde
+
+
 def check_all(pfad):
     work, tmp = _open(pfad)
     ist_zip = tmp is not None
@@ -131,6 +156,13 @@ def check_all(pfad):
             probleme.append(
                 f"{len(unvollstaendig)} Medienelement(e) ohne authors/source "
                 f"(z. B. {unvollstaendig[0][1]!r} -> {unvollstaendig[0][2]})")
+
+        ungueltig = find_invalid_copyright(content)
+        if ungueltig:
+            probleme.append(
+                f"{len(ungueltig)} copyright.license mit ungueltigem Wert "
+                f"(z. B. {ungueltig[0][1]!r} bei {ungueltig[0][0]}) — CC0 dort "
+                "als {'license': 'PD', 'version': 'CC0 1.0'}")
 
         leer = find_empty_chapters(content)
         if leer:

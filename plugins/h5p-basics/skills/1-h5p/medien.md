@@ -9,16 +9,16 @@
 > | Abschnitt | Zeilen |
 > |---|---|
 > | 1. Metadaten — der häufigste Grund für abgelehnte Uploads | 24–59 |
-> | Zwei Copyright-Felder, nur eines zählt | 60–78 |
-> | Lizenz „U" nicht blind auf CC0 setzen | 79–98 |
-> | Quellen umstellen — nur exakte Treffer ersetzen | 99–134 |
-> | 2. Alternativtexte und Barrierefreiheit | 135–167 |
-> | 3. Vorlese-Audio (TTS) | 168–190 |
-> | Grundprinzip: Vorlese-Text = sichtbarer Folientext | 191–201 |
-> | TTS-Aussprache: alles ausschreiben, was unklar ist | 202–232 |
-> | Ablauf einer Aufnahme-Runde | 233–272 |
-> | Lückentexte vorlesen: Piepton-Splice | 273–307 |
-> | 4. Video: lokal einbetten statt nur verlinken | 308–353 |
+> | Zwei Copyright-Felder, nur eines zählt | 60–101 |
+> | Lizenz „U" nicht blind auf CC0 setzen | 102–121 |
+> | Quellen umstellen — nur exakte Treffer ersetzen | 122–157 |
+> | 2. Alternativtexte und Barrierefreiheit | 158–190 |
+> | 3. Vorlese-Audio (TTS) | 191–213 |
+> | Grundprinzip: Vorlese-Text = sichtbarer Folientext | 214–224 |
+> | TTS-Aussprache: alles ausschreiben, was unklar ist | 225–255 |
+> | Ablauf einer Aufnahme-Runde | 256–295 |
+> | Lückentexte vorlesen: Piepton-Splice | 296–330 |
+> | 4. Video: lokal einbetten statt nur verlinken | 331–376 |
 <!-- /INDEX -->
 
 ## 1. Metadaten — der häufigste Grund für abgelehnte Uploads
@@ -67,6 +67,29 @@ einzigen Datei 14 unvollständige Bild-Metadaten.
   Vollprüfung hatten alle 79 Bilder und 5 Audios einer vollständig
   korrekten Datei dieses `"U"`. Nicht als „fehlende Metadaten" melden und
   nicht auf Verdacht überschreiben.
+
+**Beide Felder haben verschiedene Wertelisten — und beide werden beim
+Upload geprüft.** Unter `metadata.license` ist `"CC0 1.0"` ein gültiger
+Wert. Im älteren `copyright`-Objekt einer Datei (`params.file`,
+`sources[]`, `files[]`, Audio-/Video-Dateien, Hintergründe) ist er
+**ungültig**: dort heißt CC0 immer
+
+```json
+"copyright": {"license": "PD", "version": "CC0 1.0"}
+```
+
+Zulässige `copyright.license`-Werte: `U`, `CC BY`, `CC BY-SA`, `CC BY-ND`,
+`CC BY-NC`, `CC BY-NC-SA`, `CC BY-NC-ND`, `GNU GPL`, `PD`, `ODC PDDL`,
+`CC PDM`, `C`. Jeder andere Wert erzeugt beim Upload je Datei die Meldung
+**„Ungültig ausgewählte Option bei Auswahl"** (engl. „Invalid selected
+option in select").
+
+Tückisch: Die Meldung erscheint nur bei der **ersten Anzeige nach dem
+Hochladen**. Der Server verwirft den ungültigen Wert dabei still und
+speichert die bereinigte Fassung; ab der zweiten Anzeige ist nichts mehr
+zu sehen, ebenso nach einem Neuspeichern im Editor. „Keine Meldung" beweist
+also nichts — geprüft wird die Datei, nicht der Server
+(`h5p_check.py --all` meldet solche Werte).
 
 **Aber Vorsicht bei einem dritten, älteren Format:** manche Widgets — etwa
 `H5P.DragQuestion`-Hintergründe — tragen ihr Copyright weder im einen noch
@@ -319,14 +342,14 @@ Paket zu legen.
 el["action"]["params"]["sources"].insert(0, {
     "path": "videos/erklaervideo.mp4",
     "mime": "video/mp4",
-    "copyright": {"license": "CC0 1.0"},
+    "copyright": {"license": "PD", "version": "CC0 1.0"},
 })
 
 # H5P.InteractiveVideo — Quellen liegen TIEFER, nicht unter "sources"
 el["action"]["params"]["interactiveVideo"]["video"]["files"].insert(0, {
     "path": "videos/erklaervideo.mp4",
     "mime": "video/mp4",
-    "copyright": {"license": "CC0 1.0"},
+    "copyright": {"license": "PD", "version": "CC0 1.0"},
 })
 ```
 

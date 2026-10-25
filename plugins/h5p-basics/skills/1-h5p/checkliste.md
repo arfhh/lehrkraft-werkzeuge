@@ -17,6 +17,11 @@ die Urteilsvermögen brauchen, bleiben Handarbeit.
       `H5P.Video` im gesamten `content.json` — alle Kapitel, auch das
       letzte — hat nicht-leere `authors` **und** `source`.
       *Der am häufigsten vergessene Punkt.*
+- [ ] **`copyright.license` nur mit zulässigen Werten.** CC0 im
+      `copyright`-Objekt einer Datei als `{"license": "PD", "version":
+      "CC0 1.0"}`, nie `"CC0 1.0"` (nur in `metadata` gültig). Sonst beim
+      ersten Anzeigen „Ungültig ausgewählte Option bei Auswahl" —
+      `medien.md`, „Zwei Copyright-Felder".
 - [ ] **Quellenangaben aktuell.** Keine Verweise mehr auf eine veraltete
       Domain; echte Inhaltslinks unverändert. *Der zweithäufigste.*
 - [ ] **Bibliotheksversionen konsistent** (`find_mismatches`) — und bei
