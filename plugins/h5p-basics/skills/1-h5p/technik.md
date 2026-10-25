@@ -24,10 +24,10 @@
 > | `metadata.source` verschwindet bei frisch eingefügten Bildern | 280–290 |
 > | Kryptische Lumi-Fehler beim Öffnen | 291–297 |
 > | 4. Defekte Einträge im Archiv | 298–320 |
-> | 5. Versteckte Inhalte finden | 321–335 |
-> | 6. Textkorrekturen über die JSON-Struktur | 336–362 |
-> | 7. Verwaiste Mediendateien | 363–377 |
-> | 8. Pfade mit Umlauten (macOS) | 378–401 |
+> | 5. Versteckte Inhalte finden | 321–344 |
+> | 6. Textkorrekturen über die JSON-Struktur | 345–371 |
+> | 7. Verwaiste Mediendateien | 372–386 |
+> | 8. Pfade mit Umlauten (macOS) | 387–410 |
 <!-- /INDEX -->
 
 ## 1. Entpacken und Packen
@@ -328,6 +328,20 @@ nicht alles:
   Elementliste zeigt dort oft nur „keine Quellen". Diese Interaktionen
   enthalten echte Aufgabentexte mit eigenen Rechtschreib-, Fach- und
   LaTeX-Fehlern und müssen wie eine normale Folie geprüft werden.
+- **`H5P.InteractiveVideo` und der Aufgaben-Kreis:** Die Course Presentation
+  erkennt eine Folie nur dann als Aufgabe (weißer Kreis in der Folienleiste,
+  Abschlussseite), wenn das Video-Element sich als Aufgabe meldet. Das
+  Interaktive Video setzt `isTask` aber nur, wenn `assets.endscreens`
+  definiert ist (Quelltext: `void 0===options.assets.endscreens` bricht
+  die Prüfung ab). Deshalb immer
+  `assets.endscreens = [{"time": <Videodauer in s, abgerundet>,
+  "label": "<m:ss> Antwortübermittlung"}]` setzen, sobald das Video
+  Aufgaben enthält — der Editor lässt das Feld manchmal weg.
+  Die Dauer **immer aus dem Video selbst** messen (mp4: `ffprobe -show_entries
+  format=duration` bzw. mvhd-Atom), nie aus Untertiteln schätzen. Gibt es nur
+  den YouTube-Link, das mp4 derselben Quelle suchen (z. B. in der
+  `-Video`-Fassung). Eine Datei kann mehrere Interaktive Videos enthalten —
+  jedes einzeln prüfen (2.1.5, 4.2.2).
 - **Bibliotheksinterne Unterinhalte** (`H5P.Column` in einem Kapitel, ein
   Quiz in einem Accordion) liegen beliebig tief verschachtelt. Deshalb
   arbeitet jede Prüfung als rekursiver Struktur-Walk, nicht über feste

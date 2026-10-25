@@ -1,6 +1,6 @@
 ---
-name: 2-didaktik-bewertung
-description: "Bewertungs- und Feedbackregeln für digitale Lernaufgaben, fachunabhängig: die feste 6-Stufen-Skala für Rechtschreib- und Tippfehler bei Kurzantworten (100/90/75/50/25/0.01) samt neun Fehlerkategorien, dem Verfahren zum Ableiten neuer Fehlervarianten und der Grenze, wo die Skala nicht gilt; Anforderungsbereiche AFB I bis III und ihre Zuordnung; Bewertungsstufen und Notenmodell für längere Schülerarbeiten samt Sprachabzug; Regeln für Feedbacktexte an Schülerinnen und Schüler; anonymisiertes Bewerten mit Kürzel-IDs; Duplikatsprüfung im Graubereich. Beschreibt WIE bewertet und rückgemeldet wird — nicht, in welchem Dateiformat: für die technische Umsetzung sind die Technik-Skills zuständig. IMMER verwenden bei „Bewertungsskala\", „Tippfehler-Toleranz\", „Teilpunkte\", „AFB\", „Anforderungsbereich\", „Feedback für Schülerinnen und Schüler\", „Note berechnen\", „anonymisiert bewerten\", „Abschreibverdacht\" — auch ohne Skill-Namen."
+name: "2-didaktik-bewertung"
+description: "Bewertungs- und Feedbackregeln für digitale Lernaufgaben, fachunabhängig (Skala, AFB, Feedbacktexte, Anonymität, Duplikate)."
 ---
 
 > **Begleitdateien.** Die unten genannten Dateien liegen im Ordner dieser
@@ -19,6 +19,13 @@ zurückgemeldet wird. Sie ist unabhängig von Fach, Schulform und
 Lernplattform. Welche Datei- oder Fragenformate daraus entstehen,
 bestimmen die Technik-Skills; welche Aufgaben und Themen bewertet werden,
 bestimmt die aufrufende Projekt-Skill.
+
+**Begleitdateien** (im gleichnamigen Werkzeug-Ordner):
+
+| Datei | Lesen, wenn … |
+|---|---|
+| `fehlervarianten.md` | Lücken angelegt oder Fehlervarianten ergänzt werden |
+| `feedback-und-note.md` | Rückmeldungen formuliert oder Noten berechnet werden |
 
 ## 1 · Die 6-Stufen-Skala für Kurzantworten
 
@@ -62,38 +69,14 @@ die Skala einzustufen hätte.
 
 ## 2 · Neue Fehlervarianten ableiten
 
-Damit die Skala greift, müssen die plausiblen Falschschreibungen vorher
-eingetragen sein. Beim Anlegen und Überarbeiten einer Aufgabe werden
-deshalb systematisch Varianten abgeleitet — Richtwert **etwa zehn pro
-Lücke**, weniger bei sehr kurzen oder einfachen Begriffen.
-
-Die neun Kategorien:
-
-1. **Buchstaben-Doppelung** (Becherglas → Bechergllas)
-2. **Buchstaben-Auslassung** (Becherglas → Bechrglas)
-3. **Nachbar-Vertauschung** zweier benachbarter Buchstaben (Becherglas → Becehrglas)
-4. **Umlaut- und ß-Fehler** (ä/ae, ö/oe, ü/ue, ß/ss, ß/s)
-5. **Phonetische Verwechslung** ähnlich klingender Konsonanten (b/p, d/t, g/k, v/f/w, s/z/ss). Die **ie/i-Verwechslung** ist eine eigene, besonders häufige Unterkategorie
-6. **Tastatur-Nachbarschaft** — Nachbartaste auf der QWERTZ-Tastatur
-7. **Endungs-Variation** — falsche oder vergessene Endung, Fugen-s, Singular statt Plural
-8. **Wortstamm-Kürzung** — nur der Wortanfang, Rest fehlt oder wird per Platzhalter abgedeckt
-9. **Getrennt- und Zusammenschreibung** — ein zusammengesetztes Wort fälschlich mit Leerzeichen oder Bindestrich getrennt oder umgekehrt (Becherglas → Becher Glas). **Nach Auswertung echter Schülerarbeiten die häufigste Einzelkategorie** neben Doppelung und Auslassung — bei jedem Kompositum aktiv mitdenken
-
-**Zuordnung zur Skala:** eine einzelne Kategorie → 75 %. Zwei Kategorien im
-selben Wort → 50 %. Wortstamm-Kürzung oder breiter Platzhaltertreffer → 25 %.
-
-**Zwei Muster, die zusätzlich auf 100 % gehören:**
-
-- **Artikel- und Vollform-Varianten.** Neben dem nackten Kernbegriff auch
-  die natürliche Sprechweise zulassen („ein Becherglas", „der Gasbrenner",
-  „Schutzbrille tragen").
-- **Verwandte Wortform.** Bei Paaren wie „…gefährlich" / „…gefahr" oder
-  „…schädlich" / „…schaden" die naheliegende zweite Form ergänzen.
-
-**Synonyme** nur, wenn sie sehr naheliegend und bedeutungsgleich sind,
-höchstens fünf pro Begriff, im Zweifel keins. Ein akzeptiertes Synonym gilt
-wie der Hauptbegriff (Stufe 100) und bekommt auf Wunsch dieselbe
-Fehlervarianten-Ableitung.
+Damit die Skala greift, müssen plausible Falschschreibungen vorher
+eingetragen sein — Richtwert **etwa zehn pro Lücke**. Die neun
+Fehlerkategorien (häufigste: Getrennt-/Zusammenschreibung, Doppelung,
+Auslassung), ihre Zuordnung zur Skala (eine Kategorie 75, zwei 50,
+Stamm/Platzhalter 25), die Zusatzmuster für 100 % (Artikel-/Vollform,
+verwandte Wortform) und die Synonym-Regel: Begleitdatei
+`fehlervarianten.md`. **Beim Anlegen oder Überarbeiten von Lücken immer
+lesen.**
 
 ## 3 · Anforderungsbereiche
 
@@ -131,69 +114,31 @@ Zwei Regeln dazu:
 
 ## 5 · Feedback an Schülerinnen und Schüler
 
-**Bei nachbewerteten Kurzantworten:**
+Kernregeln:
 
-- **Das Lösungswort nennen ist erwünscht.** Bei einem großen Pool an
-  Zufallsfragen schadet die Weitergabe nicht — sie führt zum Lernen.
-- **Kurz halten:** nur das Lösungswort. Ein erklärender Satz nur, wenn
-  Verwechslungsgefahr besteht oder der Fehler ein Denkfehler ist.
-- Bei mehreren Lücken je Lücke getrennt: „Lücke 1: … · Lücke 2: …".
+- **Kurzantworten:** Lösungswort nennen ist erwünscht, sonst kurz halten;
+  ein Satz nur bei Verwechslungsgefahr oder Denkfehler.
+- **Sprachfehler** wörtlich zitieren und richtig danebenstellen, höchstens
+  zwei bis drei Vorschläge. Fehlerfreie Antwort: **kein** Kommentar.
+- **Längere Arbeiten:** Ansprache „Du", nie ein Name; reiner Klartext ohne
+  Markdown/LaTeX/Tabellen, Fachzeichen als Unicode; keine Aufforderung zum
+  Nachreichen nach Fristende.
+- **Fachlicher Abzug braucht immer eine Erklärung.** Ist eine Aufgabe nicht
+  zu 100 % richtig, steht im Feedback kurz, was fachlich falsch ist und wie
+  es richtig heißt. Sonst sehen die Lernenden nur einen Abzug und können sich
+  nicht verbessern. Nicht bearbeitete Teile brauchen keine Erklärung, das ist
+  den Lernenden sofort klar. Fachliche Fehler dagegen erkennen sie nicht
+  immer, deshalb dort die richtige Antwort nennen.
 
-```
-Lösung: Pipette.
-
-Lösung: Glasrohr. Ein Glasstab ist massiv, ein Glasrohr ist innen hohl.
-
-Lücke 1: direkt · Lücke 2: zufächeln. Man fächelt sich den Geruch mit
-der Hand zu, statt direkt daran zu riechen.
-```
-
-**Bei Sprachfehlern in freien Schreibaufgaben** wird der fehlerhafte Satz
-**wörtlich zitiert und richtig danebengestellt**, nicht abstrakt beschrieben
-(„achte auf die Satzstellung" hilft niemandem). Höchstens zwei bis drei
-Vorschläge, am Ende eine mögliche Lösung. Eine fehlerfreie Antwort bekommt
-**keinen** Kommentar — Lob ohne Inhalt wird nicht gelesen.
-
-**Bei längeren Schülerarbeiten:**
-
-- **Ansprache „Du", nie ein Name.**
-- **Reiner Klartext.** Kein LaTeX, keine Markdown-Auszeichnung, keine
-  Tabellen — Kommentarfelder von Lernplattformen stellen das nicht dar.
-  Fachzeichen als Unicode (H₂O, CO₂), ersatzweise ausgeschrieben.
-- **Keine Aufforderung zum Nachreichen**, wenn die Abgabefrist vorbei ist.
-- **Unsichere Schreibweisen aus dem Unterricht** — etwa eine vereinfachte
-  Formelschreibweise oder eine grobe Skizze — sind kein Fehler, höchstens
-  ein Hinweis.
-- Steht nur **ein Kommentarfeld** pro Person und Thema zur Verfügung, wird
-  es bei jedem Durchgang vollständig neu zusammengesetzt: die neueste
-  Rückmeldung oben und ausführlich, ältere darunter und kürzer. Dafür
-  braucht jede Einzelrückmeldung ein **Datum**, sonst bricht die
-  Staffelung.
+Beispieltexte, Unterrichts-Schreibweisen und das Zusammensetzen eines
+einzigen Kommentarfeldes: Begleitdatei `feedback-und-note.md`.
 
 ## 6 · Bewertungsstufen und Note
 
-Für längere Arbeiten drei Stufen statt Punkten:
-
-- **voll** — fachlich im Wesentlichen richtig
-- **halb** — bearbeitet, aber deutlich falsch oder sehr lückenhaft
-- **fehlend** — nicht bearbeitet, oder bestätigtes Duplikat
-
-Für die Note wird zwischen Pflicht- und Wahlaufgaben unterschieden: alle
-Pflichtaufgaben richtig ergibt die zweitbeste Note, erst zusammen mit den
-Wahlaufgaben die beste. Gibt es keine Wahlaufgaben, ergeben die
-Pflichtaufgaben die volle Punktzahl. **Die konkreten Prozentgrenzen und
-die Schwelle für eine Auszeichnung legt die aufrufende Projekt-Skill
-fest** — sie hängen an der Notenskala der Schule.
-
-**Wird zusätzlich die sprachliche Form bewertet, dann als Abzug, nicht als
-zweiter Topf:** Punkte = Inhalt minus Sprachabzug, nie unter null. Bei
-einem echten Inhalt/Sprache-Topf bekäme eine inhaltsleere, aber sauber
-geschriebene Antwort allein für die Form noch Punkte. Der Höchstabzug wird
-vorab festgelegt und die Abzugsstufen daraus abgeleitet, statt sie fest zu
-verdrahten; steht er auf null, zählt Sprache nicht für die Note — das
-Sprachfeedback wird trotzdem geschrieben. Gestaffelt wird nach der
-**absoluten Fehlerzahl**, nicht nach Fehlerdichte: bei rund 25 Wörtern
-schlägt eine Dichte nie an.
+Längere Arbeiten: **voll / halb / fehlend** statt Punkten. Pflicht- vs.
+Wahlaufgaben, Prozentgrenzen (legt die Projekt-Skill fest) und
+**Sprachbewertung nur als Abzug vom Inhalt, nie als zweiter Topf**:
+Details in `feedback-und-note.md` — vor jeder Notenberechnung lesen.
 
 ## 7 · Anonymisiert bewerten
 

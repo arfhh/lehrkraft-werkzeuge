@@ -11,6 +11,19 @@ gegen das Gedächtnis.
 Vieles davon nimmt `scripts/h5p_check.py --all DATEI.h5p` ab; die Punkte,
 die Urteilsvermögen brauchen, bleiben Handarbeit.
 
+<!-- INDEX -->
+> **Abschnitte.** Diese Datei muss nicht ganz gelesen werden — nur den
+> gebrauchten Abschnitt: `sed -n '<von>,<bis>p' checkliste.md`.
+> Nach inhaltlichen Aenderungen `python3 index_bauen.py` laufen lassen,
+> sonst stimmen die Zeilen nicht mehr.
+>
+> | Abschnitt | Zeilen |
+> |---|---|
+> | Automatisch prüfbar | 27–68 |
+> | Handarbeit | 69–97 |
+> | Danach | 98–109 |
+<!-- /INDEX -->
+
 ## Automatisch prüfbar
 
 - [ ] **Medien-Metadaten vollständig.** Jedes `H5P.Image`, `H5P.Audio`,
@@ -22,6 +35,22 @@ die Urteilsvermögen brauchen, bleiben Handarbeit.
       "CC0 1.0"}`, nie `"CC0 1.0"` (nur in `metadata` gültig). Sonst beim
       ersten Anzeigen „Ungültig ausgewählte Option bei Auswahl" —
       `medien.md`, „Zwei Copyright-Felder".
+- [ ] **Interaktives Video: Aufgaben-Kreis in der Folienleiste.** Jedes
+      `H5P.InteractiveVideo` mit Aufgaben (`assets.interactions`) hat
+      `assets.endscreens` mit mindestens dem Eintrag am Videoende:
+      `[{"time": <Dauer in s, abgerundet>, "label": "<m:ss> Antwortübermittlung"}]`.
+      Fehlt `endscreens`, hält die Course Presentation die Folie nicht für
+      eine Aufgabe und zeigt keinen weißen Kreis in der Leiste (die
+      Bibliothek setzt `isTask` nur, wenn `endscreens` definiert ist).
+      Der H5P-Editor lässt den Eintrag gelegentlich weg — **beim Bauen
+      und bei jeder Überarbeitung immer gleich mitsetzen**, nicht erst
+      nach Rückmeldung. **Die Länge immer aus dem Video selbst besorgen**
+      (mp4 messen, `ffprobe` bzw. mvhd-Dauer), nie aus Untertiteln oder
+      Interaktionszeiten schätzen. Hat die Datei nur den YouTube-Link,
+      das passende mp4 suchen (Import, Archiv oder das eingebettete mp4
+      der `-Video`-Fassung desselben Themas). Mehrere Videos in einer
+      Datei: jedes Interaktive Video einzeln prüfen. (Fälle 5.1.7 und 5.1.9,
+      12.10.26; `projekt_check.py` meldet es als FEHLER.)
 - [ ] **Quellenangaben aktuell.** Keine Verweise mehr auf eine veraltete
       Domain; echte Inhaltslinks unverändert. *Der zweithäufigste.*
 - [ ] **Bibliotheksversionen konsistent** (`find_mismatches`) — und bei
@@ -59,6 +88,14 @@ die Urteilsvermögen brauchen, bleiben Handarbeit.
       `H5P.InteractiveVideo`, verschachtelte Unterinhalte.
 - [ ] **Dateiname und Cover-Versionstext** auf das aktuelle Datum gebracht
       — beide, auch bei einer Ein-Zeilen-Korrektur.
+- [ ] **Jede Folie hat einen passenden Titel** (`keywords`).
+- [ ] **Kein Scrollen**: Mock-up-Überlaufprüfung (`mockup_render.py`) für
+      alle Folien gelaufen, unterste Textkante ≤ ca. 545 px.
+- [ ] **Keine `<table>`** in Textfeldern (Spalten-Textfelder statt dessen).
+- [ ] **Quiz-Hintergründe** nach Regel (QuestionSet-Bild; CoursePresentation
+      einfarbig getönt, kein Muster).
+- [ ] **Untertitelspuren** vollständig, Labels in Muttersprache,
+      Reihenfolge wie festgelegt, Cue-Zahl je Sprache = Quelle.
 - [ ] **Sichtprüfung**: Mock-up-Rendering angesehen oder die Datei im
       Editor gegengelesen.
 

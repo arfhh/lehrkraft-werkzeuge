@@ -12,14 +12,18 @@ in dem Elemente frei auf einer Folie positioniert werden — und damit auch
 >
 > | Abschnitt | Zeilen |
 > |---|---|
-> | Das Koordinatensystem | 25–57 |
-> | Folien-Hintergründe als Bildelement | 58–89 |
-> | Kasten-Ränder eines Hintergrundbilds ermitteln | 90–101 |
-> | Layout-Konsistenz-Check | 102–150 |
-> | Titel-Elemente | 151–174 |
-> | Elemente relativ zum Titel positionieren | 175–212 |
-> | Interaktive Widgets nicht in der Breite verändern | 213–224 |
-> | Mehrspaltige Bild-Text-Listen | 225–241 |
+> | Das Koordinatensystem | 29–61 |
+> | Folien-Hintergründe als Bildelement | 62–93 |
+> | Kasten-Ränder eines Hintergrundbilds ermitteln | 94–105 |
+> | Layout-Konsistenz-Check | 106–154 |
+> | Titel-Elemente | 155–178 |
+> | Elemente relativ zum Titel positionieren | 179–216 |
+> | Interaktive Widgets nicht in der Breite verändern | 217–228 |
+> | Mehrspaltige Bild-Text-Listen | 229–246 |
+> | Folientitel (Keywords) | 247–254 |
+> | Kein Scrollen auf Folien (allgemeingültig) | 255–263 |
+> | Keine HTML-Tabellen in Textfeldern | 264–274 |
+> | Quiz-Hintergründe | 275–287 |
 <!-- /INDEX -->
 
 ## Das Koordinatensystem
@@ -239,3 +243,45 @@ Lösungs- oder Übersichtsfolien), hat sich bewährt:
   „getreppt" statt ruhig.
 - **Nicht mehr als etwa sechs Zeilen pro Spalte**, danach eine zweite
   Spalte oder eine zweite Folie beginnen.
+
+## Folientitel (Keywords)
+
+Jede CoursePresentation-Folie bekommt einen **Titel, der zum Inhalt passt**
+(`slide["keywords"] = [{"main": "…"}]`) — z. B. „Video", „PDF: Arbeitsblatt
+herunterladen", „Quiz". Keine Folie ohne Titel, keine Platzhalter- oder
+Copy-Paste-Titel. Der Titel dient auch als Anker für Audio-Zuordnung und
+relative Positionierung (siehe „Elemente relativ zum Titel positionieren").
+
+## Kein Scrollen auf Folien (allgemeingültig)
+
+Keine Folie darf im Player scrollen müssen. Prüfung per Mock-up
+(`scripts/mockup_render.py`: 1000×562 px, Grundschrift 20 px): unterste
+Textkante (`offsetTop+scrollHeight`) höchstens ca. 545 px; bei Grenzwerten
+(540–550) im Editor gegenprüfen. Abhilfe: Text kürzen, Schrift verkleinern
+(z. B. 0,9em), auf zwei Folien aufteilen oder Elemente verschieben —
+nicht die Folie scrollen lassen.
+
+## Keine HTML-Tabellen in Textfeldern
+
+Der H5P-Texteditor (`H5P.AdvancedText`) entfernt Tabellen-Tags beim
+Speichern im Editor; die Tabelle wird zu zusammenhängendem Fließtext. Daher
+**nie** `<table>` in Textfeldern verwenden. Tabellenartige Inhalte als
+**ausgerichtete Spalten-Textfelder** bauen: pro Spalte ein eigenes Element
+(gleiches `y`, gleiche Höhe), jede Zeile eine feste Zeile (`<br>`-getrennt,
+alle Spalten gleich viele Zeilen, jede Zeile genau zwei Textzeilen o. ä.
+gleich lang gehalten), damit die Zeilen optisch fluchten. Vorher mit dem
+Mock-up auf Zeilenhöhe/Überlauf prüfen.
+
+## Quiz-Hintergründe
+
+- **`H5P.QuestionSet`:** ein Bild in `params.backgroundImage` gilt für
+  Startseite **und** Fragen zugleich (quadratisch, ca. 2000×2000 px, JPG).
+  Fehlt der Parameter, ergänzen. Ein dezentes Muster ist hier erwünscht,
+  damit Tests nicht schlicht weiß aussehen.
+- **`H5P.CoursePresentation`:** dort **kein Muster** — es stört den Inhalt.
+  Stattdessen eine **einfarbige, sehr helle Tönung** des Folieninnenraums
+  (Kasten-Hintergrundbild einfärben: Innenfläche per Flood-Fill ab einem
+  Innenpunkt, Rand/Schatten unverändert). Eine Tönung je Folientyp
+  (z. B. Zusammenfassung, Schnellcheck), **überall derselbe Farbwert**.
+- Hintergrundänderungen an Bestandsdateien durch direktes Überschreiben der
+  Bilddatei im Paket (neu packen, Referenz = Original).

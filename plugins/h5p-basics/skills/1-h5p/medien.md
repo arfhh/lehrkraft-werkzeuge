@@ -8,17 +8,18 @@
 >
 > | Abschnitt | Zeilen |
 > |---|---|
-> | 1. Metadaten — der häufigste Grund für abgelehnte Uploads | 24–59 |
-> | Zwei Copyright-Felder, nur eines zählt | 60–101 |
-> | Lizenz „U" nicht blind auf CC0 setzen | 102–121 |
-> | Quellen umstellen — nur exakte Treffer ersetzen | 122–157 |
-> | 2. Alternativtexte und Barrierefreiheit | 158–190 |
-> | 3. Vorlese-Audio (TTS) | 191–213 |
-> | Grundprinzip: Vorlese-Text = sichtbarer Folientext | 214–224 |
-> | TTS-Aussprache: alles ausschreiben, was unklar ist | 225–255 |
-> | Ablauf einer Aufnahme-Runde | 256–295 |
-> | Lückentexte vorlesen: Piepton-Splice | 296–330 |
-> | 4. Video: lokal einbetten statt nur verlinken | 331–376 |
+> | 1. Metadaten — der häufigste Grund für abgelehnte Uploads | 25–60 |
+> | Zwei Copyright-Felder, zwei Wertelisten | 61–102 |
+> | Lizenz „U" nicht blind auf CC0 setzen | 103–122 |
+> | Quellen umstellen — nur exakte Treffer ersetzen | 123–158 |
+> | 2. Alternativtexte und Barrierefreiheit | 159–191 |
+> | 3. Vorlese-Audio (TTS) | 192–214 |
+> | Grundprinzip: Vorlese-Text = sichtbarer Folientext | 215–225 |
+> | TTS-Aussprache: alles ausschreiben, was unklar ist | 226–256 |
+> | Ablauf einer Aufnahme-Runde | 257–296 |
+> | Lückentexte vorlesen: Piepton-Splice | 297–331 |
+> | 4. Video: lokal einbetten statt nur verlinken | 332–378 |
+> | 5. Mehrsprachige Untertitel (VTT) | 379–407 |
 <!-- /INDEX -->
 
 ## 1. Metadaten — der häufigste Grund für abgelehnte Uploads
@@ -57,7 +58,7 @@ gearbeitet wurde. Realer Fund: ein Projekt prüfte jahrelang nur
 `H5P.Audio` — beim ersten Lauf über `H5P.Image` fanden sich in einer
 einzigen Datei 14 unvollständige Bild-Metadaten.
 
-### Zwei Copyright-Felder, nur eines zählt
+### Zwei Copyright-Felder, zwei Wertelisten
 
 - **`metadata.license` / `metadata.authors` / `metadata.source`** — das
   maßgebliche, vom aktuellen Editor gepflegte Objekt.
@@ -374,3 +375,33 @@ el["action"]["params"]["interactiveVideo"]["video"]["files"].insert(0, {
   entpackten** Arbeitsverzeichnis (siehe `technik.md`).
 - Wird nach dem Bau der Video-Variante noch ein Fehler in der Basisdatei
   behoben, muss die Video-Variante **neu gebaut** werden, nicht gepatcht.
+
+## 5. Mehrsprachige Untertitel (VTT)
+
+Mehrere Untertitelspuren lassen sich bei `H5P.Video` als Liste
+`params.a11y` eintragen:
+
+```python
+{"label": "Español", "kind": "subtitles", "srcLang": "es",
+ "track": {"path": "videos/video-1-untertitel-es.vtt",
+           "mime": "text/vtt", "copyright": {"license": "U"}}}
+```
+
+(`H5P.InteractiveVideo`: entsprechend tiefer unter
+`interactiveVideo.video.textTracks`.) **Mehrere Tonspuren sind in H5P nicht
+möglich** — nur Untertitel.
+
+- **Label in der Muttersprache** (Deutsch, English, Español, Français,
+  Türkçe, العربية, فارسی, Polski, Українська, Русский). Reihenfolge
+  festlegen; die Originalsprache zuerst.
+- **Vor dem Übersetzen Cue-Fragmente zusammenführen**: automatisch erzeugte
+  VTT bricht mitten im Satz. Zusammenfassen bis Satzende (oder > ca. 6,5 s
+  / > ca. 110 Zeichen), erst dann übersetzen — Satzfragmente übersetzen
+  sich schlecht. Erkennungsfehler der Quell-VTT vorher korrigieren.
+- **Cue-Nummern und Zeitstempel der Übersetzung identisch zur Quelle**
+  halten und per Skript vergleichen.
+- Rechts-nach-links-Sprachen (Arabisch, Persisch) im Player gegenprüfen.
+- Übersetzungen ohne Muttersprachler-Prüfung als „maschinell erzeugt"
+  behandeln und das mitteilen.
+- Standardspur: Der Player aktiviert die erste Spur; die Reihenfolge
+  bestimmt also die Anzeige.

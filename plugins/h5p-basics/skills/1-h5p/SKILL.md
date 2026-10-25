@@ -1,6 +1,6 @@
 ---
-name: 1-h5p
-description: "H5P-Dateien (.h5p) direkt auf Dateiebene erstellen, prüfen und reparieren statt nur im grafischen Editor: Paketaufbau (h5p.json, content/content.json, Bibliotheksordner), sicheres Packen (der 'File content/ not allowed'-Uploadfehler), Bibliotheksversionen ('Bibliothek H5P.X a.b ist ungültig'), Bauen aus fertigen Basispaketen ohne Editor, Medien-Metadaten und Lizenzen, Alternativtexte, Vorlese-Audio (TTS), Video einbetten statt verlinken, Folien-Layout, Branching Scenarios, interaktive Aufgaben, Editor-Fallstricke (Lumi löscht beim Speichern Inhalte) und eine Abschluss-Checkliste. Rein technisch und projektneutral — die didaktische Beurteilung steht in den Didaktik-Skills, Dateibenennung und Design in der Projekt-Skill. IMMER verwenden bei 'H5P', '.h5p', 'Interactive Book', 'Course Presentation', 'Lumi', 'H5P-Upload', 'Lückentext/Blanks', 'Drag and Drop', 'Branching Scenario', 'Verzweigung', 'H5P bauen/verbessern/reparieren/packen' — auch ohne Skill-Namen."
+name: "1-h5p"
+description: "H5P-Dateien (.h5p) direkt auf Dateiebene erstellen, prüfen und reparieren statt nur im grafischen Editor: Paketaufbau (h5p.json, content/content.json, Bibliotheksordner), sicheres Packen (der 'File content/ not allowed'-Uploadfehler), Bibliotheksversionen ('Bibliothek H5P.X a.b ist ungültig'), Bauen aus fertigen Basispaketen ohne Editor, Medien-Metadaten und Lizenzen, Vorlese-Audio (TTS), Video einbetten statt verlinken, mehrsprachige Untertitel, Folien-Layout (Titel, kein Scrollen, Quiz-Hintergründe), Branching Scenarios, Editor-Fallstricke (Lumi löscht beim Speichern Inhalte) und eine Abschluss-Checkliste. Rein technisch und projektneutral — die didaktische Beurteilung steht in den Didaktik-Skills, Dateibenennung und Design in der Projekt-Skill. IMMER verwenden bei 'H5P', '.h5p', 'Interactive Book', 'Course Presentation', 'Lumi', 'H5P-Upload', 'Lückentext/Blanks', 'Drag and Drop', 'Branching Scenario', 'Verzweigung', 'H5P bauen/verbessern/reparieren/packen' — auch ohne Skill-Namen."
 ---
 
 # H5P auf Dateiebene
@@ -63,8 +63,8 @@ Rohtext. Beispiel-Walk und fertige Helfer: `scripts/h5p_pack.py`.
 | Vorhaben | Referenz |
 |---|---|
 | Packen, Bibliotheken, Fehlersuche, kaputte Archive, Umlaut-Pfade | `technik.md` |
-| Folienaufbau, Koordinaten, Titel, Hintergründe, Layout-Konsistenz | `layout.md` |
-| Bilder, Audio, Video, Lizenzen, Alt-Texte, Vorlese-Audio | `medien.md` |
+| Folienaufbau, Koordinaten, Titel, Hintergründe, Layout-Konsistenz, Kein-Scrollen-Regel, Tabellen, Quiz-Hintergründe | `layout.md` |
+| Bilder, Audio, Video, mehrsprachige Untertitel, Lizenzen, Alt-Texte, Vorlese-Audio | `medien.md` |
 | Aufgabenqualität, Blanks-Synonyme, Drag-Feedback, Versionierung | `inhalt-und-aufgaben.md` |
 | Eine neue Datei ohne Editor bauen | `basispakete.md` |
 | Verzweigte Lernpfade (Branching Scenario) | `verzweigung.md` |
@@ -79,7 +79,7 @@ Rohtext. Beispiel-Walk und fertige Helfer: `scripts/h5p_pack.py`.
    (Erklärung in `technik.md`). Danach die **final ausgelieferte
    Datei** noch einmal verifizieren, nicht nur eine Zwischenversion.
 
-## Die fünf Fehler, die am häufigsten passieren
+## Die sechs Fehler, die am häufigsten passieren
 
 Diese Liste ist aus über hundert realen Bearbeitungen destilliert. Wer sie
 kennt, spart sich die meisten Fehlschläge:
@@ -105,6 +105,14 @@ kennt, spart sich die meisten Fehlschläge:
    wird aus der zuletzt gültigen fertigen Datei frisch entpackt — sonst
    wandern Reste einer anderen Variante mit ins Paket (fällt oft nur an der
    Dateigröße auf).
+6. **CC0 im falschen Lizenzfeld.** `"CC0 1.0"` ist nur unter
+   `metadata.license` gültig. Im älteren `copyright`-Objekt einer Datei
+   (`params.file`, `sources[]`, `files[]`) heißt CC0 immer
+   `{"license": "PD", "version": "CC0 1.0"}`. Sonst meldet der Server
+   je Datei „Ungültig ausgewählte Option bei Auswahl" — aber nur bei der
+   ersten Anzeige nach dem Hochladen; danach ist der Wert still verworfen.
+   Keine Meldung beweist also nichts. → `medien.md`, „Zwei
+   Copyright-Felder"; `h5p_check.py --all` prüft es.
 
 ## Grundhaltung
 
@@ -123,7 +131,8 @@ kennt, spart sich die meisten Fehlschläge:
 - **Sichtprüfung einplanen.** Claude sieht kein gerendertes H5P. Vor dem
   Packen hilft ein einfaches Mock-up-Rendering (PIL: Hintergrund, Bilder an
   ihren Prozentkoordinaten, Textelemente als beschriftete Rahmen), um
-  Überlappungen zu finden — danach lässt der Mensch die Datei einmal im
+  Überlappungen zu finden (mit `scripts/mockup_render.py` zugleich der
+  Scroll-Check) — danach lässt der Mensch die Datei einmal im
   Editor gegenlesen. Eine Fertigmeldung von Claude ist keine Freigabe.
 - **Änderungen sichtbar machen.** Was automatisch korrigiert wurde, wird
   kurz aufgelistet — sonst kann niemand fachlich gegenprüfen.
@@ -131,7 +140,8 @@ kennt, spart sich die meisten Fehlschläge:
 ## Skripte
 
 Liegen im Unterordner `scripts/` des Werkzeug-Ordners, reines Python 3 ohne
-Fremdbibliotheken (nur `zip`/`unzip` als Systemwerkzeug). Sie werden in den
+Fremdbibliotheken (nur `zip`/`unzip` als Systemwerkzeug; Ausnahme
+`mockup_render.py`). Sie werden in den
 Arbeitsordner kopiert und importiert:
 
 - **`h5p_pack.py`** — `unpack()`, `pack()`, `verify()`, plus Helfer für den
@@ -142,6 +152,9 @@ Arbeitsordner kopiert und importiert:
 - **`check_library_versions.py`** — `find_mismatches()` (Binnen-Konsistenz
   einer Datei), `find_outdated()` (Aktualität über einen ganzen Ordner),
   `fix_content_json_version()`.
+- **`mockup_render.py`** — Mock-up-Render und Überlaufprüfung je Folie
+  (Playwright/Chromium nötig).
 - **`h5p_check.py`** — Kommandozeilen-Werkzeug: `--inspect` (Struktur-
-  Überblick), `--media` (Medien-Inventar mit Metadaten-Lücken), `--all`
-  (kompletter Abschluss-Selbstcheck gegen eine fertige Datei).
+  Überblick), `--media` (Medien-Inventar mit Metadaten-Libücken), `--all`
+  (kompletter Abschluss-Selbstcheck gegen eine fertige Datei, inkl.
+  ungültiger `copyright.license`-Werte).
