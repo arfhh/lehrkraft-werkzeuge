@@ -1,0 +1,7 @@
+{
+  "name": "tts-basics",
+  "description": "Texte lokal und offline vertonen (MP3) mit Chatterbox -- Installation, Doppelklick-Starter, eigene oder LibriVox-Stimme, Sprechtext-Regeln, Lizenz und KI-Kennzeichnung.",
+  "version": "1.2.0",
+  "author": { "name": "Arne Spielhoff" },
+  "license": "CC BY 4.0"
+}
